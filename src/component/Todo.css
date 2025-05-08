@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* border: 1px green solid; */
+}
+
+.Container{
+    display: flex;
+    width: 800px;
+    margin: 5rem auto;
+}
+
+.Form-div{
+    display: flex;
+    gap: .75rem;
+}
+
+.Display-todo{
+    display: flex;
+    gap: 1rem;
+    margin-top: 10px;
+    border: 1px solid red;
+    background-color: antiquewhite;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.Todo-Data{
+    display: flex;
+    gap: 1.75rem;
+    justify-content: center;
+    padding: 10px;
+}
