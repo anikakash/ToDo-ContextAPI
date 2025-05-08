@@ -6,8 +6,13 @@ const DisplayTodo = () => {
   const { todos, editTodo, deleteTodo } = useContext(TodoContext);
 
   const [editIndex, setEditIndex] = useState(null);
-  const [editData, setEditData] = useState({ title: '', description: '', priority: 'All' });
-  const [filterPriority, setFilterPriority] = useState('All'); // New filter state
+  const [editData, setEditData] = useState({
+    title: '',
+    description: '',
+    priority: 'All',
+    deadline: ''
+  });
+  const [filterPriority, setFilterPriority] = useState('All');
 
   const handleEditClick = (index) => {
     setEditIndex(index);
@@ -16,7 +21,7 @@ const DisplayTodo = () => {
 
   const handleCancel = () => {
     setEditIndex(null);
-    setEditData({ title: '', description: '', priority: 'All' });
+    setEditData({ title: '', description: '', priority: 'All', deadline: '' });
   };
 
   const handleChange = (e) => {
@@ -58,10 +63,7 @@ const DisplayTodo = () => {
         <p>No todos available.</p>
       ) : (
         filteredTodos.map((todo, index) => (
-          <div
-            key={todo.id}
-            className='Display-todo'
-          >
+          <div key={todo.id} className='Display-todo'>
             {editIndex === index ? (
               <>
                 <input
@@ -76,11 +78,21 @@ const DisplayTodo = () => {
                   onChange={handleChange}
                   placeholder="Description"
                 />
-                <select name="priority" value={editData.priority} onChange={handleChange}>
+                <select
+                  name="priority"
+                  value={editData.priority}
+                  onChange={handleChange}
+                >
                   <option value="Complete">Complete</option>
                   <option value="Pending">Pending</option>
                   <option value="ToDo">ToDo</option>
                 </select>
+                <input
+                  type="date"
+                  name="deadline"
+                  value={editData.deadline}
+                  onChange={handleChange}
+                />
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   <FaCheck style={{ cursor: 'pointer' }} onClick={handleSave} />
                   <FaTimes style={{ cursor: 'pointer' }} onClick={handleCancel} />
@@ -92,6 +104,7 @@ const DisplayTodo = () => {
                   <h3>{todo.title}</h3>
                   <p>{todo.description}</p>
                   <p><strong>Priority:</strong> {todo.priority}</p>
+                  <p><strong>Deadline:</strong> {todo.deadline || "No deadline set"}</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   <FaEdit style={{ cursor: 'pointer' }} onClick={() => handleEditClick(index)} />

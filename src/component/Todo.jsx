@@ -30,41 +30,51 @@ const Todo = () => {
     <div className="Container">
       <div >
       <form className="Form-div" onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          name="title"
-          type="text"
-          placeholder="Title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
+  <label htmlFor="title">Title</label>
+  <input
+    id="title"
+    name="title"
+    type="text"
+    placeholder="Title"
+    value={formData.title}
+    onChange={handleChange}
+    required
+  />
 
-        <label htmlFor="description">Descriptions</label>
-        <input
-          id="description"
-          name="description"
-          type="text"
-          placeholder="Descriptions"
-          value={formData.description}
-          onChange={handleChange}
-        />
+  <label htmlFor="description">Descriptions</label>
+  <input
+    id="description"
+    name="description"
+    type="text"
+    placeholder="Descriptions"
+    value={formData.description}
+    onChange={handleChange}
+  />
 
-        <label htmlFor="priority">Task Priority</label>
-        <select
-          id="priority"
-          name="priority"
-          value={formData.priority}
-          onChange={handleChange}
-        >
-          <option value="Complete">Complete</option>
-          <option value="Pending">Pending</option>
-          <option value="ToDo">ToDo</option>
-        </select>
+  <label htmlFor="priority">Task Priority</label>
+  <select
+    id="priority"
+    name="priority"
+    value={formData.priority}
+    onChange={handleChange}
+  >
+    <option value="Complete">Complete</option>
+    <option value="Pending">Pending</option>
+    <option value="ToDo">ToDo</option>
+  </select>
 
-        <button type="submit">Submit</button>
-      </form>
+  <label htmlFor="deadline">Deadline</label>
+  <input
+    id="deadline"
+    name="deadline"
+    type="date"
+    value={formData.deadline}
+    onChange={handleChange}
+  />
+
+  <button type="submit">Submit</button>
+</form>
+
     </div>
     </div>
   );
